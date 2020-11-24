@@ -6,7 +6,7 @@ import router from "./router";
 import "./assets/style/main.scss";
 // import Vuetify from "vuetify";
 // import store from './store'
-
+import BaseButton from "@/components/global/ButtonBase"
 
 const app = createApp(App);
 
@@ -14,6 +14,6 @@ const app = createApp(App);
 // app.use(store)
 app.use(router);
 
-// app.component('base-button', BaseButton)
+app.component('base-button', BaseButton)
 
 app.mount("#app");
