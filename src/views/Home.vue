@@ -1,17 +1,30 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HomeComponent :user=user />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+import HomeComponent from "@/components/Home";
+import { userService } from "@/services/userServices";
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+  components: { HomeComponent },
+  data() {
+    return {
+      user: undefined,
+    };
+  },
+  mounted() {
+    this.getInfos()
+  },
+  methods: {
+    getInfos() {
+      return userService.getUser("ibrahimdans").then(r => this.user = r);
+    },
+
+  },
+};
 </script>
