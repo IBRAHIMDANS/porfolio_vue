@@ -5,7 +5,7 @@
       method="post"
       novalidate="true"
   >
-    <input v-model="username" placeholder="username" debounce="500" />
+    <input class="text-center" v-model="username" placeholder="username" debounce="500" />
     <a type="submit" value="submit"></a>
   </form>
 </template>
@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     submitForm(e) {
-      console.log(this.username);
       this.$emit("username", this.username);
       e.preventDefault();
     },

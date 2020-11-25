@@ -20,32 +20,22 @@
 </template>
 
 <script>
-// const arrayInfo = [
-//   "avatar-url",
-//   "html_url",
-//   "public_repos",
-//   "login",
-//   "html_url",
-//   "followers",
-//   "following",
-//   "company",
-//   "location",
-//   "name",
-// ];
-
 export default {
   name: "home-component",
-  props: {
-    user: Object,
+  mounted() {
+    console.log("user", this.$store.getters.getUser);
   },
   computed: {
+    user: function() {
+      return this.$store.getters.getUser;
+    },
     avatarUrl: function() {
-      return `${this.user?.avatar_url}.png`;
+      return `${this.user?.avatar_url}`;
     },
     link: function() {
       return `${this.user?.html_url}`;
-    },
-    login: function() {
+    }
+    , login: function() {
       return `${this.user?.login}`;
     },
     publicRepos: function() {

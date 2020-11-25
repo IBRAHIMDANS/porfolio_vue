@@ -1,13 +1,23 @@
 export const userService = {
   getUser,
+  getInfos
 };
 
 function getUser(username = "ibrahimdans") {
   const requestOptions = {
     method: "GET",
   };
-
   return fetch(`${process.env.VUE_APP_APIURL}/${username}`, requestOptions)
+    .then(handleResponse)
+    .then(user => user);
+}
+
+function getInfos(path = "") {
+  const requestOptions = {
+    method: "GET",
+  };
+
+  return fetch(`${process.env.VUE_APP_APIURL}/${path}`, requestOptions)
     .then(handleResponse)
     .then(user => user);
 }

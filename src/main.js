@@ -5,13 +5,14 @@ import router from "./router";
 
 import "./assets/style/main.scss";
 // import Vuetify from "vuetify";
-// import store from './store'
+
 import BaseButton from "@/components/global/ButtonBase"
+import store from "@/store";
 
 const app = createApp(App);
 
 // app.use(Vuetify);
-// app.use(store)
+app.use(store)
 app.use(router);
 
 app.component('base-button', BaseButton)

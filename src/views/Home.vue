@@ -1,14 +1,13 @@
 <template>
   <div class="home">
-    <InputCustom @username="getInfos" class="mb-3"/>
-    <HomeComponent :user=user />
+    <InputCustom @username="getInfos" class="mb-3" />
+    <HomeComponent />
   </div>
 </template>
 
 <script>
 
 import HomeComponent from "@/components/Home";
-import { userService } from "@/services/userServices";
 import InputCustom from "@/components/global/InputCustom";
 
 export default {
@@ -24,8 +23,11 @@ export default {
   },
   methods: {
     getInfos(payload) {
-      console.log("payload",payload);
-      return userService.getUser(payload !== undefined ? payload : "ibrahimdans").then(r => this.user = r);
+      this.$store.dispatch({
+        type: "getUser",
+        value: payload !== undefined ? payload : "ibrahimdans",
+      });
+      // return userService.getUser(payload !== undefined ? payload : "ibrahimdans").then(r => this.user = r);
     },
 
   },
