@@ -13,13 +13,8 @@ import InputCustom from "@/components/global/InputCustom";
 export default {
   name: "Home",
   components: { InputCustom, HomeComponent },
-  data() {
-    return {
-      user: undefined,
-    };
-  },
   mounted() {
-    this.getInfos();
+    !this.$store.getters.getUser.login  && this.getInfos();
   },
   methods: {
     getInfos(payload) {

@@ -22,9 +22,6 @@
 <script>
 export default {
   name: "home-component",
-  mounted() {
-    console.log("user", this.$store.getters.getUser);
-  },
   computed: {
     user: function() {
       return this.$store.getters.getUser;

@@ -6,6 +6,7 @@ const store = createStore({
   state() {
     return {
       user: {},
+      projets: []
     };
   },
   mutations: {
@@ -14,16 +15,29 @@ const store = createStore({
         return state.user = result
       })
     },
+    getProjets(state, payload) {
+       userService.getInfos(payload.value).then(result => {
+         console.log(result);
+        return state.projets = result
+      })
+    },
   },
   actions: {
     getUser(context, payload) {
       context.commit("getUser", payload);
     },
+    getProjets(context, payload) {
+      console.log(payload);
+      context.commit("getProjets", payload);
+    },
   },
   getters: {
     getUser(state) {
-      console.log(state.user)
       return state.user;
+    },
+    getProjets(state) {
+      console.log(state);
+      return state.projets;
     },
   },
   modules: {},

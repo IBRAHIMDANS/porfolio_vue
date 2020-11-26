@@ -17,8 +17,11 @@ export default {
   components: {},
   data() {
     return {
-      username: "ibrahimdans",
+      username:  "ibrahimdans",
     };
+  },
+  mounted() {
+    this.username = this.$store.getters.getUser.login ? this.$store.getters.getUser.login : "ibrahimdans"
   },
   methods: {
     submitForm(e) {
