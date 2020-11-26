@@ -4,7 +4,7 @@
     <h1 class="m2 bold"> Liste des projets </h1>
     <div class="grid-container flex flex-wrap justify-center">
     <span class="grid-item" v-for="projet in projets" :key="projet.name">
-      <ProjetCard  class=" shadow bg-gray-100 rounded-xl p-8 m-5 w-96 h-auto hover:color-blue" :projet="projet" />
+      <ProjetCard  class="shadow bg-gray-100 rounded-xl p-8 m-5 w-96 h-auto hover:color-blue" :projet="projet" />
     </span>
     </div>
   </div>

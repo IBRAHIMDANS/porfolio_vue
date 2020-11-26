@@ -6,29 +6,30 @@ const store = createStore({
   state() {
     return {
       user: {},
-      projets: []
+      projets: [],
+      languages: [],
     };
   },
   mutations: {
     getUser(state, payload) {
-       userService.getUser(payload.value).then(result => {
-        return state.user = result
-      })
+      userService.getUser(payload).then(result => state.user = result);
     },
     getProjets(state, payload) {
-       userService.getInfos(payload.value).then(result => {
-         console.log(result);
-        return state.projets = result
-      })
+      userService.getInfos(payload).then(result => state.projets = result);
+    },
+    getLanguages(state, payload) {
+      userService.getInfos(payload).then(result => state.languages = Object.keys(result));
     },
   },
   actions: {
     getUser(context, payload) {
-      context.commit("getUser", payload);
+      context.commit("getUser", payload.value);
     },
     getProjets(context, payload) {
-      console.log(payload);
-      context.commit("getProjets", payload);
+      context.commit("getProjets", payload.value);
+    },
+    getLanguages(context, payload) {
+      context.commit("getLanguages", payload.value);
     },
   },
   getters: {
@@ -36,8 +37,10 @@ const store = createStore({
       return state.user;
     },
     getProjets(state) {
-      console.log(state);
       return state.projets;
+    },
+    getLanguages(state) {
+      return state.languages;
     },
   },
   modules: {},
